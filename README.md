@@ -23,4 +23,4 @@ New material emphasized includes Collections classes, JDBC, Servlets, and Java S
 4. Use Java servlets as controllers for a Java web application
 5. Use JSPs as views for a Java web application
 6. Use the MVC design pattern to architect a Java web application
-7 Integrate database technologies in a Java web application using a basic JDBC SQLite driver
+7. Integrate database technologies in a Java web application using a basic JDBC SQLite driver
