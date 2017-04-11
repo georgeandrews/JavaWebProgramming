@@ -19,7 +19,9 @@ public class Person implements Serializable {
 	private String favoriteColor;
 	
 	public Person() {
-	  // intentionally left empty
+	  this.firstName = "";
+	  this.lastName = "";
+	  this.favoriteColor = "";
 	}
 	
 	public Person(final String firstName, final String lastName, final int age, final String favoriteColor) {
