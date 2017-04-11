@@ -33,13 +33,12 @@ public class ViewAllController extends HttpServlet {
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
-    final String fileName = getServletContext().getRealPath(WorkbookUtility.INPUT_FILE);
-    final File inputFile = new File(fileName);
-    
     String target = null;
     
     try {
       
+      final String fileName = getServletContext().getRealPath(WorkbookUtility.INPUT_FILE);
+      final File inputFile = new File(fileName);
       final List<Person> people = WorkbookUtility.retrievePeopleFromWorkbook(inputFile);
       
       final String sortType = request.getParameter("sortType");

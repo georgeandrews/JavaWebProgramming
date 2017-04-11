@@ -8,4 +8,5 @@
 				<li><a href="ViewAll?sortType=age">by Age</a>
 			</ul>
 		</li>
+		<li><a href="search.jsp">Search</a></li>
 	</ul>
