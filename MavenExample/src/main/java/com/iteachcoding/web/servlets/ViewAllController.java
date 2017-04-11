@@ -16,8 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
-import com.iteachcoding.web.comparators.AgeComparator;
-import com.iteachcoding.web.comparators.LastNameComparator;
 import com.iteachcoding.web.model.Person;
 import com.iteachcoding.web.util.WorkbookUtility;
 
@@ -62,10 +60,10 @@ public class ViewAllController extends HttpServlet {
   private void sortPeople(final List<Person> people, final String sortType) {
     switch (sortType) {
     case "lastName":
-      Collections.sort(people, new LastNameComparator());
+      Collections.sort(people, (person1, person2) -> person1.getLastName().compareTo(person2.getLastName()));
       break;
     case "age":
-      Collections.sort(people, new AgeComparator());
+      Collections.sort(people, (person1, person2) -> person1.getAge().compareTo(person2.getAge()));
       break;
     default:
       break;
