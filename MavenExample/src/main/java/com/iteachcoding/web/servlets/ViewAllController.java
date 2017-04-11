@@ -65,6 +65,12 @@ public class ViewAllController extends HttpServlet {
     case "age":
       Collections.sort(people, (person1, person2) -> person1.getAge().compareTo(person2.getAge()));
       break;
+    case "firstName":
+      Collections.sort(people, (person1, person2) -> person1.getFirstName().compareTo(person2.getFirstName()));
+      break;
+    case "favoriteColor":
+      Collections.sort(people, (person1, person2) -> person1.getFavoriteColor().compareTo(person2.getFavoriteColor()));
+      break;
     default:
       break;
     }
