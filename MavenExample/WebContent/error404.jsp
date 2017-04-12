@@ -3,7 +3,6 @@
 <head>
 <title>Java Web Programming: 404 - Page Not Found</title>
 <meta name="description" content="This is a JSP example that demonstrates a 404 response page for when a page is not found in our web application.">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="includes/styles.jsp" %>
 </head>
 <body>

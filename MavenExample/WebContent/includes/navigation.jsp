@@ -11,5 +11,6 @@
 			</ul>
 		</li>
 		<li><a href="search.jsp">Search</a></li>
+		<li><a href="addPerson.jsp">Add Person</a></li>
 		<li><a href="populateDatabase.jsp">Populate Database</a>
 	</ul>

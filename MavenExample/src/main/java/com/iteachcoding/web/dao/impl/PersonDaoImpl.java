@@ -6,6 +6,7 @@ package com.iteachcoding.web.dao.impl;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -107,6 +108,36 @@ public class PersonDaoImpl implements PersonDao {
     }
     
     return people;
+  }
+
+  @Override
+  public void insertPerson(final Person person) throws PersonDaoException {
+
+    Connection connection = null;
+    PreparedStatement insertStatement = null;
+    
+    try {
+      connection = DBUtility.createConnection();
+      
+      final String sqlStatement = "insert into person (firstName, lastName, age, favoriteColor) values (?,?,?,?);";
+      insertStatement = connection.prepareStatement(sqlStatement);
+      
+      insertStatement.setString(1, person.getFirstName());
+      insertStatement.setString(2, person.getLastName());
+      insertStatement.setInt(3, person.getAge());
+      insertStatement.setString(4, person.getFavoriteColor());
+      
+      insertStatement.setQueryTimeout(DBUtility.TIMEOUT);
+      
+      insertStatement.executeUpdate();
+      
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+      throw new PersonDaoException("Error: Unable to add this person to the database.");
+    } finally {
+      DBUtility.closeConnections(connection, insertStatement);
+    }
+    
   }
 
 }

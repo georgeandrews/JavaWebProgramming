@@ -3,7 +3,6 @@
 <head>
 <title>Java Web Programming: Success</title>
 <meta name="description" content="This is a JSP example that demonstrates a Success response page for successful actions perform in our web application.">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="includes/styles.jsp" %>
 </head>
 <body>

@@ -4,7 +4,6 @@
 <head>
 <title>Java Web Programming: Error</title>
 <meta name="description" content="This is a JSP example that demonstrates an Error response page for when we encounter problems in our web application.">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="includes/styles.jsp" %>
 </head>
 <body>
