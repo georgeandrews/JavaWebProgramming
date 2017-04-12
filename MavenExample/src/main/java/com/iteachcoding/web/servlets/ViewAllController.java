@@ -3,7 +3,6 @@
  */
 package com.iteachcoding.web.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -14,10 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-
+import com.iteachcoding.web.dao.PersonDao;
+import com.iteachcoding.web.dao.impl.PersonDaoException;
+import com.iteachcoding.web.dao.impl.PersonDaoImpl;
 import com.iteachcoding.web.model.Person;
-import com.iteachcoding.web.util.WorkbookUtility;
 
 /**
  * Servlet implementation class ViewAllController
@@ -35,9 +34,8 @@ public class ViewAllController extends HttpServlet {
     
     try {
       
-      final String fileName = getServletContext().getRealPath(WorkbookUtility.INPUT_FILE);
-      final File inputFile = new File(fileName);
-      final List<Person> people = WorkbookUtility.retrievePeopleFromWorkbook(inputFile);
+      final PersonDao personDao = new PersonDaoImpl();
+      final List<Person> people = personDao.retrievePeople();
       
       final String sortType = request.getParameter("sortType");
       
@@ -49,9 +47,10 @@ public class ViewAllController extends HttpServlet {
       
       target = "view-all.jsp";
       
-    } catch (InvalidFormatException e) {
+    } catch (PersonDaoException e) {
       e.printStackTrace();
-      throw new IOException("The workbook file has an invalid format.");
+      request.setAttribute("message", e.getMessage());
+      target = "error.jsp";
     }
     
     request.getRequestDispatcher(target).forward(request, response);

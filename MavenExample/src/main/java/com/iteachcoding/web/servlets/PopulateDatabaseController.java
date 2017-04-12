@@ -1,8 +1,6 @@
 package com.iteachcoding.web.servlets;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.iteachcoding.web.dao.PersonDao;
 import com.iteachcoding.web.dao.impl.PersonDaoException;
 import com.iteachcoding.web.dao.impl.PersonDaoImpl;
-import com.iteachcoding.web.model.Person;
+import com.iteachcoding.web.util.WorkbookUtility;
 
 /**
- * Servlet implementation class SearchController
+ * Servlet implementation class PopulateDatabaseController
  */
-@WebServlet("/Search")
-public class SearchController extends HttpServlet {
+@WebServlet("/PopulateDatabase")
+public class PopulateDatabaseController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -27,23 +25,17 @@ public class SearchController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
-    String target = null;
+	  String target = null;
     
     try {
       
+      final String filePath = getServletContext().getRealPath(WorkbookUtility.INPUT_FILE);
       final PersonDao personDao = new PersonDaoImpl();
-      final List<Person> people = personDao.retrievePeople();
       
-      final String firstName = request.getParameter("firstName");
+      personDao.populate(filePath);
       
-      final List<Person> filtered = people
-                                      .stream()
-                                      .filter((person) -> person.getFirstName().equalsIgnoreCase(firstName))
-                                      .collect(Collectors.toList());
-      
-      request.setAttribute("people", filtered);
-      
-      target = "view-all.jsp";
+      request.setAttribute("message", "Database populated...");
+      target = "success.jsp";
       
     } catch (PersonDaoException e) {
       e.printStackTrace();
