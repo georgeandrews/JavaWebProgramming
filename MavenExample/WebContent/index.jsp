@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -13,9 +14,20 @@
 	</div>
 	<%@ include file="includes/navigation.jsp" %>
 	<div class="container">
+<c:choose>
+	<c:when test="${user != null && not empty user.firstName}">
+		<p>Hello ${user.firstName}!</p>
+	</c:when>
+</c:choose>
 		<p>Thank you for making the commitment to be in class everyday as we cover 
 		the competencies you will need to demonstrate in order to be a Java Web Programmer 
 		in our industry.</p>
+<c:choose>
+	<c:when test="${!registered}">
+		<p>Please <a href="register.jsp"><strong>register</strong></a> with our site to view all of the content 
+		on our website!</p>
+	</c:when>
+</c:choose>
 	</div>
 	<%@ include file="includes/footer.jsp" %>
 </div>
