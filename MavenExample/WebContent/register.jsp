@@ -31,7 +31,6 @@ form to register a new user for the application.">
 			<input type="submit" value="Register!">
 		</form>
 	</div>
-	<hr>
 	<%@ include file="includes/footer.jsp" %>
 </div>
 <%@ include file="includes/scripts.jsp" %>
