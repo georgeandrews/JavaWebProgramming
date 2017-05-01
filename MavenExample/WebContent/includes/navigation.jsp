@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<ul class="nav nav-tabs">
 		<li><a href="index.jsp">Home</a></li>
-<c:choose>
-	<c:when test="${registered}">
+<c:if test="${registered}">
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">View All<b class="caret"></b></a>  
 			<ul class="dropdown-menu">
@@ -16,6 +15,5 @@
 		<li><a href="search.jsp">Search</a></li>
 		<li><a href="addPerson.jsp">Add Person</a></li>
 		<li><a href="populateDatabase.jsp">Populate Database</a>
-	</c:when>
-</c:choose>
+</c:if>
 	</ul>

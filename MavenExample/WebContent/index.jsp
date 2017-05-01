@@ -22,12 +22,6 @@
 		<p>Thank you for making the commitment to be in class everyday as we cover 
 		the competencies you will need to demonstrate in order to be a Java Web Programmer 
 		in our industry.</p>
-<c:choose>
-	<c:when test="${!registered}">
-		<p>Please <a href="register.jsp"><strong>register</strong></a> with our site to view all of the content 
-		on our website!</p>
-	</c:when>
-</c:choose>
 	</div>
 	<%@ include file="includes/footer.jsp" %>
 </div>
