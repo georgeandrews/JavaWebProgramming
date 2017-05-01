@@ -14,11 +14,9 @@
 	</div>
 	<%@ include file="includes/navigation.jsp" %>
 	<div class="container">
-<c:choose>
-	<c:when test="${user != null && not empty user.firstName}">
+<c:if test="${user != null && not empty user.firstName}">
 		<p>Hello ${user.firstName}!</p>
-	</c:when>
-</c:choose>
+</c:if>
 		<p>Thank you for making the commitment to be in class everyday as we cover 
 		the competencies you will need to demonstrate in order to be a Java Web Programmer 
 		in our industry.</p>
